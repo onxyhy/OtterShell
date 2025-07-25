@@ -1,6 +1,7 @@
 package otter.sherry.ottershell.basketProduct;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,14 @@ public class BasketProductController {
             @RequestParam Integer productId,
             @RequestParam int count) {
 
+        try{
         basketProductService.addProductToBasket(userId, productId, count);
-        return ResponseEntity.ok("상품이 장바구니에 추가되었습니다.");
+        return ResponseEntity.ok("상품이 장바구니에 추가되었습니다.");}
+        catch (Exception e){
+            //"상품이 이미 장바구니에 있습니다"가 body로 들어가면 안되는 이유 : 이 외에도 많은 에러 있음
+            // 상품 추가 중 디비 연결 끊김, 같은 아이디로 동시에 장바구니 담음, 물건 넣는 중 로그인이 풀림
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("장바구니 추가 중 오류가 발생했습니다.");
+        }
     }
 
     // 장바구니 상품 전체 조회
