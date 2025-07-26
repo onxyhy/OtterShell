@@ -47,6 +47,14 @@ public class BasketProductService {
                 .orElseThrow(() -> new IllegalArgumentException("유저가 존재하지 않습니다"));
 
         BasketEntity basket = user.getBasket(); // BasketEntity에 getBasket() 있으면
+
+        if(basket == null){
+        basket = new BasketEntity();
+        basket.setUser(user);
+        basket = basketRepository.save(basket);
+        //save해야 id가 자동증가 됨
+        }
+
         return basketProductRepository.findByBasketEntity(basket);
     }
 
@@ -54,4 +62,5 @@ public class BasketProductService {
     public void deleteBasketProduct(Integer basketProductId) {
         basketProductRepository.deleteById(basketProductId);
     }
+
 }
