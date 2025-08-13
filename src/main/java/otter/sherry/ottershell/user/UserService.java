@@ -24,6 +24,9 @@ public class UserService implements UserDetailsService {
         return userRepository.save(userEntity);
     }
 
+    public UserEntity getUserEntity(int userId){
+        return userRepository.findByUserId(userId);
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

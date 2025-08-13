@@ -25,8 +25,8 @@ public class ProductService {
         productRepository.delete(productEntity);
     }
     //상품 1개 조회
-    public ProductEntity getAProduct(Integer id){
-        ProductEntity productEntity = productRepository.findById(id).get();
+    public ProductEntity getProductEntity(Integer productId){
+        ProductEntity productEntity = productRepository.findById(productId).get();
         return productEntity;
     }
 }

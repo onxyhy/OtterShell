@@ -33,10 +33,10 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
-    @GetMapping("/{id}")
-    @Operation(summary = "상품 1개 조회", description = "상품 1개 조회하는 API(로그인 필요)")
-    public ProductEntity getAProduct(@PathVariable Integer id, @AuthenticationPrincipal UserEntity user) {
-        return productService.getAProduct(id);
-    }
+//    @GetMapping("/{id}")
+//    @Operation(summary = "상품 1개 조회", description = "상품 1개 조회하는 API(로그인 필요)")
+//    public ProductEntity getAProduct(@PathVariable Integer id, @AuthenticationPrincipal UserEntity user) {
+//        return productService.getAProduct(id);
+//    }
 
 }

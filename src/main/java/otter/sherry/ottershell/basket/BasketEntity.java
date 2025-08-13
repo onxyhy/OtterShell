@@ -26,7 +26,9 @@ public class BasketEntity {
     @OneToMany(mappedBy = "basketEntity")
     List<BasketProductEntity> basketProducts;
 
-    private String id;
-    private String userPassword;
+    public BasketEntity(UserEntity user) {
+        this.user = user;
+    }
+    
 
 }

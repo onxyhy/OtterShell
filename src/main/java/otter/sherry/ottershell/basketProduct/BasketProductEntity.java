@@ -19,7 +19,7 @@ public class BasketProductEntity {
     private Integer basketProductId;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "productId")
     private ProductEntity productEntity;
 
     @ManyToOne
@@ -27,5 +27,11 @@ public class BasketProductEntity {
     private BasketEntity basketEntity;
 
     private Integer count;
+
+    public BasketProductEntity (BasketEntity basketEntity, ProductEntity productEntity, Integer count){
+        this.basketEntity = basketEntity;
+        this.productEntity = productEntity;
+        this.count = count;
+    }
 
 }
